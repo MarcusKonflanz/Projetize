@@ -59,7 +59,7 @@ Este projeto é livre para estudo e aprendizado. Licenciamento futuro será defi
 | Swagger                          | Swashbuckle                       |dotnet add package Swashbuckle.AspNetCore                              |
 | Autenticação com JWT             | JWT                               |dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer       |
 | FluentValidation                 |                                   | dotnet add package FluentValidation.AspNetCore                        |
-| BCrypt                           | Encripta senhas                   | dotnet add package BCrypt.Net-Next
+| BCrypt                           | Encripta senhas                   | dotnet add package BCrypt.Net-Next                                    |
 
 ---
 

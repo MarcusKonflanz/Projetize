@@ -20,7 +20,7 @@ namespace Projetize.Api.Services
 
         public async Task SendConfirmationEmailAsync(string toEmail, string toName, string token)
         {
-            var apiKey = _configuration["SendGrid:ApiKey"];
+            var apiKey = _configuration["SendGrid:Key"];
             var fromEmail = _configuration["SendGrid:FromEmail"];
             var fromName = _configuration["SendGrid:FromName"];
 
