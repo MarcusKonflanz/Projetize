@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.api\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.api\\models\\accesslog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\models\\accesslog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "Projetize.Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\appsettings.json",
-              "RelativeToolTip": "Projetize.Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-22T16:02:51.415Z",
+              "Title": "AccessLog.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Models\\AccessLog.cs",
+              "RelativeDocumentMoniker": "Projetize.Api\\Models\\AccessLog.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Models\\AccessLog.cs",
+              "RelativeToolTip": "Projetize.Api\\Models\\AccessLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:07:13.414Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IEmailService.cs",
-              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Services\\IEmailService.cs",
-              "RelativeDocumentMoniker": "Projetize.Api\\Services\\IEmailService.cs",
-              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Services\\IEmailService.cs",
-              "RelativeToolTip": "Projetize.Api\\Services\\IEmailService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAAyAAAAAAAAAA==",
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Projetize.Api\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Projetize.Api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T16:02:45.624Z",
+              "WhenOpened": "2025-05-22T17:53:23.183Z",
               "EditorCaption": ""
             }
           ]

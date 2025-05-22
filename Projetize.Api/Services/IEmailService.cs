@@ -33,5 +33,21 @@ namespace Projetize.Api.Services
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }
+
+        public async Task SendPasswordResetEmailAsync(string toEmail, string toName, string token)
+        {
+            var apiKey = _configuration["SendGrid:Key"];
+            var fromEmail = _configuration["SendGrid:FromEmail"];
+            var fromName = _configuration["SendGrid:FromName"];
+
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress(fromEmail, fromName);
+            var subject = "Recuperação de senha - Projetize";
+            var to = new EmailAddress(toEmail, toName);
+            var plainTextContent = $"Seu código de recuperação chegou!";
+            var htmlContent = $"<strong>Você solicitou a recuperação de senha no Projetize. Use o seguinte código para redefinir: {token}. Este código expira em 15 minutos. </strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+        }
     }
 }

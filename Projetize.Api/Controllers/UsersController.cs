@@ -10,6 +10,7 @@ using Projetize.Api.Models;
 using Projetize.Api.Models.Login;
 using Projetize.Api.Services;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 
 namespace Projetize.Api.Controllers
@@ -21,10 +22,11 @@ namespace Projetize.Api.Controllers
         private readonly AppDBContext _context;
         private readonly JwtService _jwtService;
         private readonly EmailService _emailService;
-        public UsersController(AppDBContext context, JwtService jwtService)
+        public UsersController(AppDBContext context, JwtService jwtService, EmailService emailService)
         {
             _context = context;
             _jwtService = jwtService;
+            _emailService = emailService;
         }
 
         [HttpPost("register")]
@@ -111,11 +113,52 @@ namespace Projetize.Api.Controllers
 
             var user = login.Contains("@") ? await _context.Users.FirstOrDefaultAsync(u => u.Email == login) : await _context.Users.FirstOrDefaultAsync(u => u.UserName == login);
 
+            var ip = HttpContext.Connection.RemoteIpAddress?.ToString();
+            if (Request.Headers.ContainsKey("X-Forwarded-For"))
+                ip = Request.Headers["X-Forwarded-For"].ToString().Split(',').FirstOrDefault();
+
             if (user == null)
+            {
+                _context.AccessLogs.Add(new AccessLog
+                {
+                    userId = null,
+                    UserEmail = dto.Login,
+                    Succeeded = false,
+                    IpAdress = ip,
+                    AttemptedAt = DateTime.Now,
+
+                });
+
+                await _context.SaveChangesAsync();
                 return Unauthorized("Usuário não encontrado.");
+            }
 
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
+            {
+                _context.AccessLogs.Add(new AccessLog
+                {
+                    userId = user.Id.ToString(),
+                    UserEmail = user.Email,
+                    Succeeded = false,
+                    IpAdress = ip,
+                    AttemptedAt = DateTime.Now,
+
+                });
+
+                await _context.SaveChangesAsync();
                 return Unauthorized("Credenciais inválidas.");
+            }
+
+            AccessLog accessLog = new AccessLog
+            {
+                userId = user.Id.ToString(),
+                UserEmail = user.Email,
+                Succeeded = true,
+                IpAdress = ip,
+                AttemptedAt = DateTime.Now,
+
+            };
+            _context.AccessLogs.Add(accessLog);
 
             user.LastLogin = DateTime.Now;
             await _context.SaveChangesAsync();
@@ -243,6 +286,48 @@ namespace Projetize.Api.Controllers
             );
 
             return Ok("E-mail enviado com sucesso.");
+        }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] EmailConfirmationDTO dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+            if (user == null)
+                return Unauthorized("Usuário não encontrado");
+
+            Guid token = Guid.NewGuid();
+
+            user.PasswordResetToken = token.ToString().Substring(0, 6);
+            user.PasswordResetTokenExpiresAt = DateTime.UtcNow.AddMinutes(15);
+            await _context.SaveChangesAsync();
+
+            await _emailService.SendPasswordResetEmailAsync(user.Email, user.Name, user.PasswordResetToken);
+
+            return Ok("Se encontrarmos este e-mail, enviaremos um código de redefinição.");
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+            if (user == null)
+                return NotFound("usuário não encontrado.");
+
+            if (user.PasswordResetToken != dto.Token)
+                return NotFound("Código inválido");
+
+            if (user.PasswordResetTokenExpiresAt < DateTime.UtcNow)
+                return Unauthorized("Seu código expirou, solicite um novo");
+
+            user.Password = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+            user.PasswordResetToken = null;
+            user.PasswordResetTokenExpiresAt = DateTime.MinValue;
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Senha alterada com sucesso.");
         }
     }
 }

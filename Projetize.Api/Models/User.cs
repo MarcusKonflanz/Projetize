@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Projetize.Api.Models
+﻿namespace Projetize.Api.Models
 {
     public class User
     {
@@ -15,7 +13,8 @@ namespace Projetize.Api.Models
         public bool EmailConfirmed { get; set; }
         public string EmailConfirmationToken { get; set; }
         public DateTime EmailConfirmationTokenExpiresAt { get; set; }
-
+        public string PasswordResetToken { get; set; }
+        public DateTime PasswordResetTokenExpiresAt { get; set; }
         public User()
         {
             CreateAt = DateTime.UtcNow;

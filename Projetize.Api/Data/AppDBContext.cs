@@ -16,5 +16,6 @@ namespace Projetize.Api.Data
         public DbSet<User> Users { get; set; }
         public DbSet<RevokedToken> RevokedTokens { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<AccessLog> AccessLogs { get; set; }
     }
 }
