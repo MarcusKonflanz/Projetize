@@ -76,12 +76,3 @@ Desenvolvido por Marcus Konflanz
 └── Projetize.App      # Frontend Blazor WebAssembly
 
 
-Envio de emails adicionar ao appsettings:
- "SendGrid": {
-        "Key": "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",
-        "FromEmail": "projetize.tasker@gmail.com",
-        "FromName": "Projetize"
-    }
-
-
-
