@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\MK_Dev\\Projetize\\",
+  "WorkspaceRootPath": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\mk_dev\\projetize\\projetize.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\mk_dev\\projetize\\projetize.app\\projetize.app.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\projetize.app.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\models\\login\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\models\\login\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\mk_dev\\projetize\\projetize.app\\layout\\loginlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\layout\\loginlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\models\\login\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\models\\login\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +35,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\MK_Dev\\Projetize\\Projetize.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "Projetize.Api\\appsettings.json",
-              "ToolTip": "C:\\MK_Dev\\Projetize\\Projetize.Api\\appsettings.json",
-              "RelativeToolTip": "Projetize.Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-23T01:01:45.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Projetize.App.csproj",
-              "DocumentMoniker": "C:\\MK_Dev\\Projetize\\Projetize.App\\Projetize.App.csproj",
-              "RelativeDocumentMoniker": "Projetize.App\\Projetize.App.csproj",
-              "ToolTip": "C:\\MK_Dev\\Projetize\\Projetize.App\\Projetize.App.csproj",
-              "RelativeToolTip": "Projetize.App\\Projetize.App.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-23T00:43:49.067Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Program.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Program.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Program.cs",
+              "RelativeToolTip": "Projetize.App\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:48:21.957Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LoginLayout.razor",
-              "DocumentMoniker": "C:\\MK_Dev\\Projetize\\Projetize.App\\Layout\\LoginLayout.razor",
-              "RelativeDocumentMoniker": "Projetize.App\\Layout\\LoginLayout.razor",
-              "ToolTip": "C:\\MK_Dev\\Projetize\\Projetize.App\\Layout\\LoginLayout.razor",
-              "RelativeToolTip": "Projetize.App\\Layout\\LoginLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T00:42:17.437Z"
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Models\\Login\\LoginModel.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Models\\Login\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Models\\Login\\LoginModel.cs",
+              "RelativeToolTip": "Projetize.App\\Models\\Login\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:38:14.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Models\\Login\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Models\\Login\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Models\\Login\\AuthResponse.cs",
+              "RelativeToolTip": "Projetize.App\\Models\\Login\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:47:29.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "Projetize.App\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\wwwroot\\index.html",
+              "RelativeToolTip": "Projetize.App\\wwwroot\\index.html",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-23T19:39:53.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Services\\AuthService.cs",
+              "RelativeToolTip": "Projetize.App\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:35:48.573Z",
+              "EditorCaption": ""
             }
           ]
         }

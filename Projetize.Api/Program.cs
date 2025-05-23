@@ -131,6 +131,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Habilitar CORS
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(policy =>
+//    {
+//        policy.AllowAnyOrigin()
+//              .AllowAnyHeader()
+//              .AllowAnyMethod();
+//    });
+//});
+
+app.UseCors();
+
 app.UseHttpsRedirection();          // Redireciona HTTP -> HTTPS
 app.UseAuthentication();           // Ativa autenticação JWT
 app.UseAuthorization();            // Ativa autorização

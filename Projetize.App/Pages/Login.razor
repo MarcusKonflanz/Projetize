@@ -1,13 +1,40 @@
 ﻿@page "/login"
+@using Projetize.App.Models.Login
 @layout LoginLayout
+@inject NavigationManager Navigation
 
-<h3>Login</h3>
+<PageTitle>Login</PageTitle>
 
-<MudTextField @bind-Value="teste" Label="Informe seu usuario e senha: " Variant="Variant.Outlined">
+<MudContainer MaxWidth="MaxWidth.Small" Class="d-flex justify-content-around align-center" Style="min-height: 100vh;">
+    <MudPaper Elevation="4" Class="pa-4" Style="width: 400px">
+        <MudText Typo="Typo.h5" Align="Align.Center">Login</MudText>
+        <MudForm @ref="form" Model="@loginModel" OnValidSubmit="HandlerLogin">
+            <MudTextField Label="Username" @bind-Value="loginModel.Login" For="@(() => loginModel.Login)" Required="true" Variant="Variant.Filled" FullWidth="true" />
+            <MudTextField Label="Password" @bind-Value="loginModel.Password" For="@(() => loginModel.Password)" Required="true" Variant="Variant.Filled" FullWidth="true" Type="password" />
+            <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4">
+                Login
+            </MudButton>
+            @if (loginError)
+            {
+                <MudAlert Severity="Severity.Error" Class="mt-4">
+                    Invalid username or password.
+                </MudAlert>
+            }
+        </MudForm>
+        <MudText Align="Align.Center" Class="mt-3">
+            <MudLink Href="/forgot-password">Forgot password?</MudLink>
+        </MudText>
+    </MudPaper>
+</MudContainer>
 
 @code {
-    public void teste()
+    private LoginModel loginModel { get; set; } = new();
+    private string ErrorMessage { get; set; }
+    private bool loginError = false;
+    private MudForm form;
+
+    private async Task HandlerLogin()
     {
-        
+       
     }
 }
