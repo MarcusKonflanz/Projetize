@@ -1,4 +1,4 @@
-﻿// ✨ Usings principais
+﻿// Usings principais
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
@@ -62,7 +62,6 @@ builder.Services.AddScoped<JwtService>(); // Serviço de geração de tokens
 
 // SendGrid
 builder.Services.AddScoped<IEmailService, EmailService>(); // Serviço de envio de e-mails
-
 
 builder.Services.AddAuthentication(options =>
 {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.JSInterop.Infrastructure;
 using Projetize.Api.Data;
 using Projetize.Api.DTOs.Login;
 using Projetize.Api.DTOs.User;
@@ -10,7 +8,6 @@ using Projetize.Api.Models;
 using Projetize.Api.Models.Login;
 using Projetize.Api.Services;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 using System.Security.Claims;
 
 namespace Projetize.Api.Controllers
@@ -21,8 +18,8 @@ namespace Projetize.Api.Controllers
     {
         private readonly AppDBContext _context;
         private readonly JwtService _jwtService;
-        private readonly EmailService _emailService;
-        public UsersController(AppDBContext context, JwtService jwtService, EmailService emailService)
+        private readonly IEmailService _emailService;
+        public UsersController(AppDBContext context, JwtService jwtService, IEmailService emailService)
         {
             _context = context;
             _jwtService = jwtService;

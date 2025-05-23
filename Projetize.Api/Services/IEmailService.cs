@@ -7,6 +7,7 @@ namespace Projetize.Api.Services
     public interface IEmailService
     {
         Task SendConfirmationEmailAsync(string email, string toName, string token);
+        Task SendPasswordResetEmailAsync(string email, string toName, string token);
     }
 
     public class EmailService : IEmailService
@@ -20,7 +21,7 @@ namespace Projetize.Api.Services
 
         public async Task SendConfirmationEmailAsync(string toEmail, string toName, string token)
         {
-            var apiKey = _configuration["SendGrid:Key"];
+            var apiKey = _configuration["SendGrid:ApiKey"];
             var fromEmail = _configuration["SendGrid:FromEmail"];
             var fromName = _configuration["SendGrid:FromName"];
 
@@ -36,7 +37,7 @@ namespace Projetize.Api.Services
 
         public async Task SendPasswordResetEmailAsync(string toEmail, string toName, string token)
         {
-            var apiKey = _configuration["SendGrid:Key"];
+            var apiKey = _configuration["SendGrid:ApiKey"];
             var fromEmail = _configuration["SendGrid:FromEmail"];
             var fromName = _configuration["SendGrid:FromName"];
 
