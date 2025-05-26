@@ -102,15 +102,66 @@ code {
     color: #c02d76;
 }
 
+/* Fundo com degradê */
 .login-container {
-    max-width: 400px;
-    margin: 8vh auto;
-    padding: 2rem;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #e3eaf4, #c9d6e3);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.full-width {
-    width: 100%;
+/* Caixa de login */
+.login-paper {
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: #f4f6f8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+/* Logo com animação */
+.login-logo {
+    width: 120px;
+    margin-bottom: 1rem;
+    animation: fadeSlide 1s ease-in-out;
+}
+
+/* Título do login */
+.login-title {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+/* Botão com hover */
+.MudButton-root:hover {
+    background-color: #1976d2 !important;
+    color: white !important;
+}
+
+/* Animação do logo */
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .login-paper {
+        width: 90% !important;
+        padding: 1rem;
+    }
+
+    .login-logo {
+        width: 90px;
+    }
 }
