@@ -4,18 +4,25 @@ using MudBlazor.Services;
 using Projetize.App;
 using Projetize.App.Services;
 using Blazored.LocalStorage;
+using System.Net.Http;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+// Componentes raiz da aplicação
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// declarando MudBlazor
+// Serviços de UI e componentes (MudBlazor)
 builder.Services.AddMudServices();
 
-// Injeção de Serviços
+// Serviços personalizados e utilitários
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddBlazoredLocalStorage();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7089") });
+// HttpClient configurado para comunicação com a API
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri("https://localhost:7089")
+});
 
 await builder.Build().RunAsync();

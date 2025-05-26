@@ -6,7 +6,7 @@ namespace Projetize.App.Services
 {
     public interface IAuthService
     {
-        Task LoginAsync(LoginModel loginModel);
+        Task<bool> LoginAsync(LoginModel loginModel);
     }
     public class AuthService : IAuthService
     {
@@ -19,11 +19,11 @@ namespace Projetize.App.Services
 
         public async Task<bool> LoginAsync(LoginModel loginModel)
         {
-            var response = await httpClient.PostAsJsonAsync("api/auth/login", loginModel);
+            var response = await httpClient.PostAsJsonAsync("api/Users/login", loginModel);
 
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<Docker.DotNet.Models.AuthResponse>();
+                var result = await response.Content.ReadFromJsonAsync<Models.Login.AuthResponse>();
 
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.Token);
 
@@ -32,5 +32,6 @@ namespace Projetize.App.Services
 
             return false;
         }
+
     }
 }

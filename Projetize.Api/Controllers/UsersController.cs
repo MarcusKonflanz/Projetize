@@ -49,7 +49,9 @@ namespace Projetize.Api.Controllers
                 CreateAt = DateTime.Now,
                 IsActive = true,
                 EmailConfirmationToken = confirmationToken.ToString().Substring(0, 6),
-                EmailConfirmationTokenExpiresAt = DateTime.Now.AddMinutes(15)
+                EmailConfirmationTokenExpiresAt = DateTime.Now.AddMinutes(15),
+                PasswordResetToken = "",
+                PasswordResetTokenExpiresAt = DateTime.MinValue,
             };
 
             _context.Users.Add(user);

@@ -11,12 +11,14 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
-//  CONFIGURAÇÃO DE SERVIÇOS (Dependency Injection)
+
+// CONFIGURAÇÃO DE SERVIÇOS (Dependency Injection)
+
 // Controllers e Endpoints
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Swagger (documentação e autenticação via JWT no Swagger)
+// Swagger - documentação e autenticação JWT no Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -25,7 +27,6 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 
-    // Define o esquema de autenticação Bearer para o Swagger
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "Informe o token JWT no formato: Bearer {seu_token}",
@@ -46,23 +47,33 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            new string[] { }
         }
     });
 });
 
 // FluentValidation
-builder.Services.AddFluentValidationAutoValidation(); // Ativa a validação automática
+builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<UserRegisterDTOValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UserUpdateDTOValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<LoginDTOValidator>();
 
-//  JWT Authentication
-builder.Services.AddScoped<JwtService>(); // Serviço de geração de tokens
-
-// SendGrid
+// Serviços personalizados
+builder.Services.AddScoped<JwtService>();                 // Geração de tokens JWT
 builder.Services.AddScoped<IEmailService, EmailService>(); // Serviço de envio de e-mails
+builder.Services.AddHostedService<TokenCleanupService>();  // Serviço em background para limpar tokens expirados
 
+// Configuração do banco de dados
+builder.Services.AddDbContext<AppDBContext>(options =>
+{
+#if DEBUG
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")); // SQL Server em desenvolvimento
+#else
+    options.UseSqlite("Data Source=projetize.db"); // SQLite em produção
+#endif
+});
+
+// Configuração de autenticação JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -81,7 +92,6 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 
-    // Verificação de tokens revogados
     options.Events = new JwtBearerEvents
     {
         OnTokenValidated = async context =>
@@ -107,47 +117,36 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//  Banco de Dados
-builder.Services.AddDbContext<AppDBContext>(options =>
+// Configuração CORS
+builder.Services.AddCors(options =>
 {
-#if DEBUG
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")); // Em modo dev, usa SQL Server
-#else
-    options.UseSqlite("Data Source=projetize.db"); // Em produção, usa SQLite
-#endif
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
-// Serviço em segundo plano para limpar tokens expirados
-builder.Services.AddHostedService<TokenCleanupService>();
 
-//  CONFIGURAÇÃO DO PIPELINE DE EXECUÇÃO (Middleware)
+// CONFIGURAÇÃO DO PIPELINE DE EXECUÇÃO (Middleware)
 
 var app = builder.Build();
 
-//  Middleware do Swagger em ambiente de desenvolvimento
+// Middleware Swagger - só em desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Habilitar CORS
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(policy =>
-//    {
-//        policy.AllowAnyOrigin()
-//              .AllowAnyHeader()
-//              .AllowAnyMethod();
-//    });
-//});
+app.UseHttpsRedirection();
 
 app.UseCors();
 
-app.UseHttpsRedirection();          // Redireciona HTTP -> HTTPS
-app.UseAuthentication();           // Ativa autenticação JWT
-app.UseAuthorization();            // Ativa autorização
+app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapControllers();              // Mapeia os endpoints dos controllers
+app.MapControllers();
 
-app.Run();                         // Inicia a aplicação
+app.Run();

@@ -1,6 +1,8 @@
 ﻿@page "/login"
 @using Projetize.App.Models.Login
+@using Projetize.App.Services
 @layout LoginLayout
+@inject IAuthService AuthService
 @inject NavigationManager Navigation
 
 <PageTitle>Login</PageTitle>
@@ -11,7 +13,7 @@
         <MudForm @ref="form" Model="@loginModel" OnValidSubmit="HandlerLogin">
             <MudTextField Label="Username" @bind-Value="loginModel.Login" For="@(() => loginModel.Login)" Required="true" Variant="Variant.Filled" FullWidth="true" />
             <MudTextField Label="Password" @bind-Value="loginModel.Password" For="@(() => loginModel.Password)" Required="true" Variant="Variant.Filled" FullWidth="true" Type="password" />
-            <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4">
+            <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4" OnClick="HandlerLogin">
                 Login
             </MudButton>
             @if (loginError)
@@ -35,6 +37,9 @@
 
     private async Task HandlerLogin()
     {
-       
+        var success = await AuthService.LoginAsync(loginModel);
+
+        if (success)
+            Navigation.NavigateTo("/");
     }
 }
