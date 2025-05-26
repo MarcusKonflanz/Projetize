@@ -9,10 +9,13 @@
 
 <MudContainer MaxWidth="MaxWidth.Small" Class="d-flex justify-content-around align-center" Style="min-height: 100vh;">
     <MudPaper Elevation="4" Class="pa-4" Style="width: 400px">
+
+        <MudImage Src="images/logo.png" Alt="Tasker Logo" Class="mx-auto mb-4" Style="display:block; max-width: 150px;" />
+
         <MudText Typo="Typo.h5" Align="Align.Center">Login</MudText>
         <MudForm @ref="form" Model="@loginModel" OnValidSubmit="HandlerLogin">
             <MudTextField Label="Username" @bind-Value="loginModel.Login" For="@(() => loginModel.Login)" Required="true" Variant="Variant.Filled" FullWidth="true" />
-            <MudTextField Label="Password" @bind-Value="loginModel.Password" For="@(() => loginModel.Password)" Required="true" Variant="Variant.Filled" FullWidth="true" Type="password" />
+            <MudTextField Label="Password" @bind-Value="loginModel.Password" For="@(() => loginModel.Password)" Required="true" Variant="Variant.Filled" FullWidth="true" InputType="InputType.Password"/>
             <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4" OnClick="HandlerLogin">
                 Login
             </MudButton>
