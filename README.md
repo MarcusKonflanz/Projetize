@@ -21,12 +21,12 @@ Este é um projeto full stack desenvolvido com **ASP.NET Core (API)**, **Blazor 
 ## 🧱 Tecnologias utilizadas
 
 | Camada        | Tecnologia                        | Estado             |
-|---------------|---------------------------------|--------------------|
-| Backend       | ASP.NET Core 8 (Web API)         | Em desenvolvimento |
-| Frontend      | Blazor WebAssembly + MudBlazor   | Futuro             |
-| Banco de Dados| SQL Server                      | Futuro             |
-| Autenticação  | JWT                             | Futuro             |
-| Hospedagem    | GitHub + Render                 | Futuro             |
+|---------------|---------------------------------|----------------------|
+| Backend       | ASP.NET Core 8 (Web API)         | Em desenvolvimento  |
+| Frontend      | Blazor WebAssembly + MudBlazor   | Em desenvolvimento  |           |
+| Banco de Dados| SQL Server                      | Futuro               |
+| Autenticação  | JWT                             | Desenvolvido         |
+| Hospedagem    | GitHub + Render                 | Futuro               |
 
 ---
 
