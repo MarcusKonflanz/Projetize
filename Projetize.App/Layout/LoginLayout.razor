@@ -1,9 +1,75 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor.Utilities
+@inherits LayoutComponentBase
+<MudThemeProvider @ref="_mudThemeProvider"
+                  Theme="_theme"
+                  @bind-IsDarkMode="@_isDarkTheme" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 <MudContainer>
+    <MudSwitch T="bool" @bind-value="@_isDarkTheme" />
     @Body
 </MudContainer>
 
 @code {
+    private bool _isDarkTheme = true; // ou true para começar em dark
+    private MudThemeProvider _mudThemeProvider = null!;
+
+    public MudTheme _theme = new MudTheme
+        {
+            PaletteLight = new PaletteLight
+            {
+                Primary = "#0D47A1",         // Azul escuro para botões e destaques
+                Secondary = "#00B8D4",       // Azul claro para elementos secundários
+                Background = "#ECEFF1",      // Cinza muito claro (fundo geral)
+                Surface = "#FAFAFA",         // Superfície de cards, inputs
+                AppbarBackground = "#0D47A1",
+                AppbarText = "#FFFFFF",
+                DrawerBackground = "#FFFFFF",
+                DrawerText = "#0D47A1",
+                DrawerIcon = "#0D47A1",
+                TextPrimary = "#263238",     // Cinza escuro (texto principal)
+                TextSecondary = "#607D8B",   // Cinza médio (texto secundário)
+                ActionDefault = "#CFD8DC",
+                ActionDisabled = "#B0BEC5",
+                ActionDisabledBackground = "#ECEFF1"
+            },
+            PaletteDark = new PaletteDark
+            {
+                Primary = "#90CAF9",
+                Secondary = "#00B8D4",
+                Background = "#121212",
+                Surface = "#1E1E1E",
+                AppbarBackground = "#0D47A1",
+                AppbarText = "#FFFFFF",
+                DrawerBackground = "#1E1E1E",
+                DrawerText = "#FFFFFF",
+                DrawerIcon = "#90CAF9",
+                TextPrimary = "#E0E0E0",
+                TextSecondary = "#B0BEC5",
+                ActionDefault = "#424242",
+                ActionDisabled = "#555555",
+                ActionDisabledBackground = "#333333"
+            }
+        };
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isDarkTheme = await _mudThemeProvider.GetSystemPreference();
+            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            StateHasChanged();
+        }
+    }
+
+    Task OnSystemPreferenceChanged(bool newValue)
+    {
+        _isDarkTheme = newValue;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
 
 }

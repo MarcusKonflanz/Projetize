@@ -4,7 +4,6 @@ using MudBlazor.Services;
 using Projetize.App;
 using Projetize.App.Services;
 using Blazored.LocalStorage;
-using System.Net.Http;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 

@@ -7,48 +7,95 @@
 
 <PageTitle>Login</PageTitle>
 
-<MudContainer MaxWidth="MaxWidth.False" Class="login-container">
-    <MudPaper Elevation="4" Class="login-paper">
-        <MudImage Src="images/logo.png" Alt="Logo" Class="login-logo" />
-        <MudText Typo="Typo.h6" Align="Align.Center" Class="login-title">
-            Acesse sua conta
-        </MudText>
+<section @onkeyup="KeyPressHandled">
+    <MudContainer Fixed="true" Class="d-flex justify-center align-center" Style="min-height: 100vh;">
+        <MudPaper Elevation="8" Class="pa-6" Style="width:100%; max-width:400px; border-radius: 20px; margin-top: -70px;">
 
-        <MudForm @ref="form" Model="@loginModel" OnValidSubmit="HandlerLogin">
-            <MudTextField Label="Username" @bind-Value="loginModel.Login" For="@(() => loginModel.Login)" Required="true" Variant="Variant.Filled" FullWidth="true" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Person" />
-            <MudTextField Label="Password" @bind-Value="loginModel.Password" For="@(() => loginModel.Password)" Required="true" Variant="Variant.Filled" FullWidth="true" InputType="InputType.Password" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Lock" />
+            <div class="d-flex justify-center mb-4">
+                <img src="/Images/logo.png" alt="Projetize Logo" style="height: 200px;" class="logo" />
+            </div>
 
-            <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4" OnClick="HandlerLogin">
-                Entrar
-            </MudButton>
+            <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-2">Bem-vindo ao Projetize</MudText>
+            <MudText Typo="Typo.body2" Align="Align.Center" Class="mb-4">Faça login para continuar</MudText>
+
+            <MudForm @ref="form" Model="@loginModel" OnValidSubmit="HandleLogin">
+                <MudTextField Label="Usuário" Variant="Variant.Outlined" @bind-Value="loginModel.Login" Margin="Margin.Dense" Required="true" RequiredError="Campo obrigatorio" FullWidth="true" />
+                <MudTextField Label="Senha" Variant="Variant.Outlined"
+                              @bind-Value="loginModel.Password"
+                              Margin="Margin.Dense"
+                              Required="true"
+                              RequiredError="Campo obrigatorio"
+                              FullWidth="true"
+                              InputType="@PasswordInput"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@PasswordInputIcon"
+                              OnAdornmentClick="ButtonTestclick"
+                              AdornmentAriaLabel="Ver senha" />
+
+                <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4" OnClick="HandlerLogin">
+                    Entrar
+                </MudButton>
+            </MudForm>
 
             @if (loginError)
             {
                 <MudAlert Severity="Severity.Error" Class="mt-4">
-                    Usuário ou senha inválidos.
+                    @errorMessage
                 </MudAlert>
             }
-            <MudText Align="Align.Center" Class="mt-3">
-                <MudLink Href="/forgot-password">Forgot password?</MudLink>
-            </MudText>
-        </MudForm>
 
-    </MudPaper>
-</MudContainer>
+            <MudText Align="Align.Center" Class="mt-3">
+                <MudLink Href="/forgot-password">Esqueceu a senha?</MudLink>
+                <br />
+                <hr />
+                <MudLink Href="/register">Novo cadastro</MudLink>
+            </MudText>
+        </MudPaper>
+    </MudContainer>
+</section>
 
 @code {
     private LoginModel loginModel { get; set; } = new();
-    private string ErrorMessage { get; set; }
     private bool loginError = false;
+    public string errorMessage = string.Empty;
     private MudForm form;
+
+    bool isShow;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    private async void KeyPressHandled(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+            await HandlerLogin();
+    }
+
+    void ButtonTestclick()
+    {
+        @if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else
+        {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
 
     private async Task HandlerLogin()
     {
         var success = await AuthService.LoginAsync(loginModel);
 
-        if (success)
+        if (success.Succes)
             Navigation.NavigateTo("/");
-        if (!success)
+        if (!success.Succes)
+        {
             loginError = true;
+            errorMessage = success.Message;
+        }
     }
 }

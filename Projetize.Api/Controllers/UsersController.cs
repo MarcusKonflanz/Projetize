@@ -148,6 +148,11 @@ namespace Projetize.Api.Controllers
                 return Unauthorized("Credenciais inválidas.");
             }
 
+            if (user.EmailConfirmed == false)
+            {
+                return Unauthorized("Confirme seu email antes de realizar o acesso.");
+            }
+
             AccessLog accessLog = new AccessLog
             {
                 userId = user.Id.ToString(),

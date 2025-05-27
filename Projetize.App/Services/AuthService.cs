@@ -6,7 +6,7 @@ namespace Projetize.App.Services
 {
     public interface IAuthService
     {
-        Task<bool> LoginAsync(LoginModel loginModel);
+        Task<(bool Succes, string Message)> LoginAsync(LoginModel loginModel);
     }
     public class AuthService : IAuthService
     {
@@ -17,9 +17,11 @@ namespace Projetize.App.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<bool> LoginAsync(LoginModel loginModel)
+        public async Task<(bool Succes, string Message)> LoginAsync(LoginModel loginModel)
         {
             var response = await httpClient.PostAsJsonAsync("api/Users/login", loginModel);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
             {
@@ -27,11 +29,10 @@ namespace Projetize.App.Services
 
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.Token);
 
-                return true;
+                return (true, "Login realizado com sucesso.");
             }
 
-            return false;
+            return (false, responseContent);
         }
-
     }
 }
