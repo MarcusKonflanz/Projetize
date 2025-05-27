@@ -1,18 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\MK_Dev\\Projetize\\",
+  "WorkspaceRootPath": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\mk_dev\\projetize\\projetize.app\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\pages\\user\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\user\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\mk_dev\\projetize\\projetize.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\mk_dev\\projetize\\projetize.app\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\pages\\user\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\user\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\MK_Dev\\Projetize\\Projetize.App\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Projetize.App\\Services\\AuthService.cs",
-              "ToolTip": "C:\\MK_Dev\\Projetize\\Projetize.App\\Services\\AuthService.cs",
-              "RelativeToolTip": "Projetize.App\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T01:14:52.497Z",
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Login.razor",
+              "RelativeDocumentMoniker": "Projetize.App\\Pages\\User\\Login.razor",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Login.razor",
+              "RelativeToolTip": "Projetize.App\\Pages\\User\\Login.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-27T15:59:12.795Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\MK_Dev\\Projetize\\Projetize.Api\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Projetize.Api\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\MK_Dev\\Projetize\\Projetize.Api\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Projetize.Api\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAIAwwJcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T00:51:03.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.razor",
-              "DocumentMoniker": "C:\\MK_Dev\\Projetize\\Projetize.App\\Pages\\Login.razor",
-              "RelativeDocumentMoniker": "Projetize.App\\Pages\\Login.razor",
-              "ToolTip": "C:\\MK_Dev\\Projetize\\Projetize.App\\Pages\\Login.razor",
-              "RelativeToolTip": "Projetize.App\\Pages\\Login.razor",
-              "ViewState": "AgIAACEAAAAAAAAAAIAwwGIAAAAIAAAAAAAAAA==",
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Register.razor",
+              "RelativeDocumentMoniker": "Projetize.App\\Pages\\User\\Register.razor",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Register.razor",
+              "RelativeToolTip": "Projetize.App\\Pages\\User\\Register.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-27T00:18:27.082Z",
+              "WhenOpened": "2025-05-27T15:58:16.745Z",
               "EditorCaption": ""
             }
           ]

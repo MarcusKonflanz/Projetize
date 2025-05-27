@@ -1,8 +1,9 @@
 ﻿using Docker.DotNet.Models;
+using Microsoft.JSInterop;
 using Projetize.App.Models.Login;
 using System.Net.Http.Json;
 
-namespace Projetize.App.Services
+namespace Projetize.App.Services.Auth
 {
     public interface IAuthService
     {
@@ -11,10 +12,12 @@ namespace Projetize.App.Services
     public class AuthService : IAuthService
     {
         private readonly HttpClient httpClient;
+        private readonly IJSRuntime jsRuntime;
 
-        public AuthService(HttpClient httpClient)
+        public AuthService(HttpClient httpClient, IJSRuntime jsRuntime  )
         {
             this.httpClient = httpClient;
+            this.jsRuntime = jsRuntime;
         }
 
         public async Task<(bool Succes, string Message)> LoginAsync(LoginModel loginModel)
@@ -27,7 +30,9 @@ namespace Projetize.App.Services
             {
                 var result = await response.Content.ReadFromJsonAsync<Models.Login.AuthResponse>();
 
-                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.Token);
+                // Armazena os tokens no localStorage
+                await jsRuntime.InvokeVoidAsync("localStorage.setItem", "accessToken", result.Token);
+                await jsRuntime.InvokeVoidAsync("localStorage.setItem", "refreshToken", result.RefreshToken);
 
                 return (true, "Login realizado com sucesso.");
             }
