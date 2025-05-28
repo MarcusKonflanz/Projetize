@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.api\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69C2A674-A1DC-4486-BE7B-B15B34BF6334}|Projetize.Api\\Projetize.Api.csproj|solutionrelative:projetize.api\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\pages\\user\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\user\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -27,6 +31,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Services\\IEmailService.cs",
+              "RelativeDocumentMoniker": "Projetize.Api\\Services\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.Api\\Services\\IEmailService.cs",
+              "RelativeToolTip": "Projetize.Api\\Services\\IEmailService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwEYAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T18:48:16.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Login.razor",
               "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Login.razor",
               "RelativeDocumentMoniker": "Projetize.App\\Pages\\User\\Login.razor",
@@ -34,12 +51,11 @@
               "RelativeToolTip": "Projetize.App\\Pages\\User\\Login.razor",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-27T15:59:12.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T15:59:12.795Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Register.razor",
               "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Register.razor",
               "RelativeDocumentMoniker": "Projetize.App\\Pages\\User\\Register.razor",
@@ -47,8 +63,7 @@
               "RelativeToolTip": "Projetize.App\\Pages\\User\\Register.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-27T15:58:16.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T15:58:16.745Z"
             }
           ]
         }
