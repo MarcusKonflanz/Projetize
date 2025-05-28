@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\pages\\components\\authguard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\components\\authguard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Services\\Auth\\AuthService.cs",
-              "RelativeDocumentMoniker": "Projetize.App\\Services\\Auth\\AuthService.cs",
-              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Services\\Auth\\AuthService.cs",
-              "RelativeToolTip": "Projetize.App\\Services\\Auth\\AuthService.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAIwD0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T16:54:57.2Z",
+              "Title": "AuthGuard.razor",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\Components\\AuthGuard.razor",
+              "RelativeDocumentMoniker": "Projetize.App\\Pages\\Components\\AuthGuard.razor",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\Components\\AuthGuard.razor",
+              "RelativeToolTip": "Projetize.App\\Pages\\Components\\AuthGuard.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T19:16:44.899Z",
               "EditorCaption": ""
             }
           ]

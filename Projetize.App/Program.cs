@@ -14,7 +14,16 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 // Serviços de UI e componentes (MudBlazor)
 builder.Services.AddMudServices();
 
-// Serviços personalizados e utilitários
+// Handlers e HTTP Client
+builder.Services.AddScoped<AuthMessageHandler>();
+
+builder.Services.AddHttpClient("AuthorizedClient", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7089/");
+})
+.AddHttpMessageHandler<AuthMessageHandler>();
+
+// Serviço de autenticação
 builder.Services.AddScoped<IAuthService>(sp =>
 {
     var factory = sp.GetRequiredService<IHttpClientFactory>();
@@ -22,14 +31,5 @@ builder.Services.AddScoped<IAuthService>(sp =>
     var jsRuntime = sp.GetRequiredService<IJSRuntime>();
     return new AuthService(client, jsRuntime);
 });
-
-// HttpClient configurado para comunicação com a API
-builder.Services.AddScoped<AuthMessageHandler>();
-builder.Services.AddHttpClient("AuthorizedClient", client =>
-{
-    client.BaseAddress = new Uri("https://localhost:7089/");
-})
-.AddHttpMessageHandler<AuthMessageHandler>();
-
 
 await builder.Build().RunAsync();

@@ -9,6 +9,8 @@ namespace Projetize.App.Services.Auth
     public interface IAuthService
     {
         Task<(bool Succes, string Message)> LoginAsync(LoginModel loginModel);
+        Task<bool> IsAuthenticated();
+        Task<bool> RefreshTokenAsync();
     }
     public class AuthService : IAuthService
     {
@@ -57,21 +59,54 @@ namespace Projetize.App.Services.Auth
             return (true, "Token restaurado com sucesso.");
         }
 
-        public async Task<bool Succes> RefreshTokenAsync()
+        public async Task<bool> RefreshTokenAsync()
         {
             var token = await jsRuntime.InvokeAsync<string>("localStorage.getItem", "refreshToken");
 
-            var response = await httpClient.PostAsJsonAsync("api/Users/refresh", token);
-
-            if (response == null)
+            if (string.IsNullOrWhiteSpace(token))
                 return false;
 
-            if (response.IsSuccessStatusCode)
+            RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest()
             {
+                RefreshToken = token
+            };
 
-            }
+            var response = await httpClient.PostAsJsonAsync("api/Users/refresh", refreshTokenRequest);
 
+            if (!response.IsSuccessStatusCode)
+                return false;
+
+            var result = await response.Content.ReadFromJsonAsync<Models.Login.AuthResponse>();
+
+            if (result == null)
+                return false;
+
+            await jsRuntime.InvokeVoidAsync("localStorage.setItem", "accessToken", result.Token);
+            await jsRuntime.InvokeVoidAsync("localStorage.setItem", "refreshToken", result.RefreshToken);
+
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.Token);
+
+            return true;
         }
 
+        public async Task<bool> IsAuthenticated()
+        {
+            var token = await jsRuntime.InvokeAsync<string>("localStorage.getItem", "accessToken");
+
+            if (string.IsNullOrWhiteSpace(token))
+                return false;
+            try
+            {
+                var expiration = JwtHelper.GetExpiration(token);
+                if (expiration == null || expiration <= DateTime.UtcNow)
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
