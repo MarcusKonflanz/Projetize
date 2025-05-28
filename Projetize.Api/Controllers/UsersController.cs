@@ -286,7 +286,7 @@ namespace Projetize.Api.Controllers
             await emailService.SendConfirmationEmailAsync(
                 "vi.i.konflanz@gmail.com",
                 "Marcus Konflanz",
-                "123456"
+                "12DSF6"
             );
 
             return Ok("E-mail enviado com sucesso.");
