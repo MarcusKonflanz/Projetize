@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Projetize.App.Helpers.Utils;
-using System.Net.Http;
+using Projetize.App.Models.Login;
 using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Net.Http.Json;
 
 namespace Projetize.App.Services.Auth
 {
@@ -12,13 +11,11 @@ namespace Projetize.App.Services.Auth
     {
         private readonly IJSRuntime jsRuntime;
         private readonly NavigationManager navigationManager;
-        private readonly IAuthService authService;
 
-        public AuthMessageHandler(IJSRuntime jsRuntime, NavigationManager navigationManager, IAuthService authService)
+        public AuthMessageHandler(IJSRuntime jsRuntime, NavigationManager navigationManager)
         {
             this.jsRuntime = jsRuntime;
             this.navigationManager = navigationManager;
-            this.authService = authService;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -31,7 +28,7 @@ namespace Projetize.App.Services.Auth
 
                 if (expiration != null && expiration <= DateTime.UtcNow.AddSeconds(30))
                 {
-                    var refreshed = await authService.RefreshTokenAsync();
+                    bool refreshed = await TryRefreshTokenAsync(request, cancellationToken);
                     if (!refreshed)
                     {
                         navigationManager.NavigateTo("/login", true);
@@ -45,6 +42,39 @@ namespace Projetize.App.Services.Auth
             }
 
             return await base.SendAsync(request, cancellationToken);
+        }
+
+        private async Task<bool> TryRefreshTokenAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var refreshToken = await jsRuntime.InvokeAsync<string>("localStorage.getItem", "refreshToken");
+
+            if (string.IsNullOrWhiteSpace(refreshToken))
+                return false;
+
+            var refreshRequest = new RefreshTokenRequestModel
+            {
+                RefreshToken = refreshToken
+            };
+
+            using var httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(request.RequestUri.GetLeftPart(UriPartial.Authority))
+            };
+
+            var response = await httpClient.PostAsJsonAsync("api/Users/refresh", refreshRequest, cancellationToken);
+
+            if (!response.IsSuccessStatusCode)
+                return false;
+
+            var result = await response.Content.ReadFromJsonAsync<AuthResponseModel>(cancellationToken: cancellationToken);
+
+            if (result == null)
+                return false;
+
+            await jsRuntime.InvokeVoidAsync("localStorage.setItem", "accessToken", result.Token);
+            await jsRuntime.InvokeVoidAsync("localStorage.setItem", "refreshToken", result.RefreshToken);
+
+            return true;
         }
     }
 }

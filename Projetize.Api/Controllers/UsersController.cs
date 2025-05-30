@@ -26,6 +26,7 @@ namespace Projetize.Api.Controllers
             _emailService = emailService;
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDTO dto)
         {

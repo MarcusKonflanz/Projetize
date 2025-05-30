@@ -1,6 +1,6 @@
 ﻿namespace Projetize.App.Models.Login
 {
-    public class RefreshTokenRequest
+    public class RefreshTokenRequestModel
     {
         public string RefreshToken { get; set; }
     }

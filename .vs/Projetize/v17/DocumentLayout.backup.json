@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\pages\\components\\authguard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\components\\authguard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\models\\login\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\models\\login\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|c:\\users\\marcusk\\documents\\projetosgpt\\projetize\\projetize\\projetize.app\\pages\\user\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{117774AC-3FB8-46E7-8D85-3FB99ECB8903}|Projetize.App\\Projetize.App.csproj|solutionrelative:projetize.app\\pages\\user\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +35,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthGuard.razor",
-              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\Components\\AuthGuard.razor",
-              "RelativeDocumentMoniker": "Projetize.App\\Pages\\Components\\AuthGuard.razor",
-              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\Components\\AuthGuard.razor",
-              "RelativeToolTip": "Projetize.App\\Pages\\Components\\AuthGuard.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Program.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Program.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Program.cs",
+              "RelativeToolTip": "Projetize.App\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T19:26:16.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RegisterModel.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Models\\Login\\RegisterModel.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Models\\Login\\RegisterModel.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Models\\Login\\RegisterModel.cs",
+              "RelativeToolTip": "Projetize.App\\Models\\Login\\RegisterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T18:58:51.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Services\\Auth\\AuthService.cs",
+              "RelativeDocumentMoniker": "Projetize.App\\Services\\Auth\\AuthService.cs",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Services\\Auth\\AuthService.cs",
+              "RelativeToolTip": "Projetize.App\\Services\\Auth\\AuthService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wG8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T18:46:11.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Register.razor",
+              "RelativeDocumentMoniker": "Projetize.App\\Pages\\User\\Register.razor",
+              "ToolTip": "C:\\Users\\marcusk\\Documents\\projetosGPT\\Projetize\\Projetize\\Projetize.App\\Pages\\User\\Register.razor",
+              "RelativeToolTip": "Projetize.App\\Pages\\User\\Register.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-28T19:16:44.899Z",
+              "WhenOpened": "2025-05-30T18:45:33.189Z",
               "EditorCaption": ""
             }
           ]

@@ -1,11 +1,155 @@
 ﻿@page "/register"
-@using Projetize.App.Models.Login
-@using Projetize.App.Services
-@using Projetize.App.Services.Auth
 @layout LoginLayout
+@using Projetize.App.Models.Login
+@using Projetize.App.Services.Auth
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager Navigation
+@inject IAuthService AuthService
 
-<h3>Register</h3>
+<PageTitle>Cadastro de Usuário</PageTitle>
+
+<MudContainer Fixed="true" Class="d-flex justify-center align-center" Style="min-height: 100vh;">
+    <MudPaper Elevation="8" Class="pa-6" Style="width:100%; max-width:400px; border-radius: 20px; margin-top: 1rem;">
+        @if (!confirmEmail)
+        {
+            <div class="d-flex justify-center mb-4">
+                <img src="/Images/logo.png" alt="Projetize Logo" style="height: 200px;" class="logo" />
+            </div>
+
+            <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-2">Bem-vindo ao Projetize</MudText>
+            <MudText Typo="Typo.body2" Align="Align.Center" Class="mb-4">Faça login para continuar</MudText>
+
+            <MudForm @ref="form" Model="@registerModel" OnValidSubmit="HandlerRegister">
+                <MudTextField Label="Nome" Variant="Variant.Outlined" @bind-Value="registerModel.Name" Margin="Margin.Dense" Required="true" RequiredError="Campo obrigatorio" FullWidth="true" />
+                <MudTextField Label="Usuário" Variant="Variant.Outlined" @bind-Value="registerModel.UserName" Margin="Margin.Dense" Required="true" RequiredError="Campo obrigatorio" FullWidth="true" />
+                <MudTextField Label="Email" Variant="Variant.Outlined" @bind-Value="registerModel.Email" Margin="Margin.Dense" Required="true" RequiredError="Campo obrigatório" FullWidth="true" InputType="InputType.Email"
+                              Validation="@((string e) => new EmailAddressAttribute().IsValid(e) ? null : "E-mail inválido")" />
+
+
+                <MudTextField Label="Senha" Variant="Variant.Outlined"
+                              @bind-Value="registerModel.Password"
+                              Margin="Margin.Dense"
+                              Required="true"
+                              RequiredError="Campo obrigatorio"
+                              FullWidth="true"
+                              InputType="@PasswordInput"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@PasswordInputIcon"
+                              OnAdornmentClick="TogglePasswordVisibility"
+                              AdornmentAriaLabel="Ver senha" />
+
+                <MudTextField Label="Confirme sua senha" Variant="Variant.Outlined"
+                              @bind-Value="confirmPassword"
+                              Margin="Margin.Dense"
+                              Required="true"
+                              RequiredError="Campo obrigatorio"
+                              FullWidth="true"
+                              InputType="@PasswordInput"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@PasswordInputIcon"
+                              OnAdornmentClick="ToggleConfirmVisibility"
+                              AdornmentAriaLabel="Ver senha" />
+
+                <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4" Disabled="@isSubmitting">
+                    @(isSubmitting ? "Enviando..." : "Cadastrar")
+                </MudButton>
+            </MudForm>
+
+            @if (registerError)
+            {
+                <MudAlert Severity="Severity.Error" Class="mt-4">
+                    @errorMessage
+                </MudAlert>
+            }
+        }
+        else
+        {
+            <MudForm @ref="formConfirm" Model="@confirmEmailModel" OnValidSubmit="HandlerConfirm">
+                <MudText Typo="Typo.h5" Align="Align.Center" Class="mb-2">Informe seu código de verificação no campo abaixo:</MudText>
+                <MudText Typo="Typo.body2" Align="Align.Center" Class="mb-4">Verifique seu e-mail, é possível que o código esteja na caixa de spam.</MudText>
+                <MudTextField Label="Nome" Variant="Variant.Outlined" @bind-Value="confirmEmailModel.Code" Margin="Margin.Dense" Required="true" RequiredError="Campo obrigatorio" FullWidth="true" MaxLength="6"/>
+                <MudButton Type="Submit" Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Class="mt-4">
+                    Confirmar Código
+                </MudButton>
+            </MudForm>
+        }
+    </MudPaper>
+</MudContainer>
 
 @code {
+    private RegisterModel registerModel { get; set; } = new();
+    private ConfirmEmailModel confirmEmailModel { get; set; } = new();
+    private bool registerError = false;
+    private bool isSubmitting = false;
+    public string errorMessage = string.Empty;
+    public bool confirmEmail = false;
+    public string confirmPassword;
+    private MudForm form;
+    private MudForm formConfirm;
 
+    bool isShowPassword;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    bool isShowConfirm;
+    InputType ConfirmInput = InputType.Password;
+    string ConfirmInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    void TogglePasswordVisibility()
+    {
+        isShowPassword = !isShowPassword;
+        PasswordInput = isShowPassword ? InputType.Text : InputType.Password;
+        PasswordInputIcon = isShowPassword ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
+    }
+
+    void ToggleConfirmVisibility()
+    {
+        isShowConfirm = !isShowConfirm;
+        ConfirmInput = isShowConfirm ? InputType.Text : InputType.Password;
+        ConfirmInputIcon = isShowConfirm ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
+    }
+
+    private async Task HandlerRegister()
+    {
+        if (registerModel.Password != confirmPassword)
+        {
+            errorMessage = "As senhas não coincidem.";
+            registerError = true;
+            return;
+        }
+        isSubmitting = true;
+
+        var success = await AuthService.RegisterAsync(registerModel);
+
+        isSubmitting = false;
+
+        if (success.Succes)
+        {
+            Navigation.NavigateTo("/login");
+            return;    
+        }
+
+        errorMessage = success.Message;
+        registerError = true;
+
+    }
+     private async Task HandlerConfirm()
+    {
+        if (string.IsNullOrWhiteSpace(confirmEmailModel.ToString()))
+        {
+            errorMessage = "Insira o código de confirmação.";
+            registerError = true;
+            return;
+        }
+
+        var success = await AuthService.ConfirmEmailAsync(confirmEmailModel);
+
+        if (!success.Succes)
+        {
+            errorMessage = success.Message;
+            registerError = true;
+        }
+
+        Navigation.NavigateTo("/login");
+    }
 }

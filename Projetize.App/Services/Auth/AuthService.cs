@@ -1,5 +1,4 @@
-﻿using Docker.DotNet.Models;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using Projetize.App.Helpers.Utils;
 using Projetize.App.Models.Login;
 using System.Net.Http.Json;
@@ -11,7 +10,10 @@ namespace Projetize.App.Services.Auth
         Task<(bool Succes, string Message)> LoginAsync(LoginModel loginModel);
         Task<bool> IsAuthenticated();
         Task<bool> RefreshTokenAsync();
+        Task<(bool Succes, string Message)> RegisterAsync(RegisterModel register);
+        Task<(bool Succes, string Message)> ConfirmEmailAsync(ConfirmEmailModel confirmEmail);
     }
+
     public class AuthService : IAuthService
     {
         private readonly HttpClient httpClient;
@@ -22,18 +24,15 @@ namespace Projetize.App.Services.Auth
             this.httpClient = httpClient;
             this.jsRuntime = jsRuntime;
         }
-
         public async Task<(bool Succes, string Message)> LoginAsync(LoginModel loginModel)
         {
             var response = await httpClient.PostAsJsonAsync("api/Users/login", loginModel);
-
             var responseContent = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<Models.Login.AuthResponse>();
+                var result = await response.Content.ReadFromJsonAsync<AuthResponseModel>();
 
-                // Armazena os tokens no localStorage
                 await jsRuntime.InvokeVoidAsync("localStorage.setItem", "accessToken", result.Token);
                 await jsRuntime.InvokeVoidAsync("localStorage.setItem", "refreshToken", result.RefreshToken);
 
@@ -42,7 +41,6 @@ namespace Projetize.App.Services.Auth
 
             return (false, responseContent);
         }
-
         public async Task<(bool Succes, string Message)> InitializeAsync()
         {
             var token = await jsRuntime.InvokeAsync<string>("localStorage.getItem", "accessToken");
@@ -58,7 +56,6 @@ namespace Projetize.App.Services.Auth
 
             return (true, "Token restaurado com sucesso.");
         }
-
         public async Task<bool> RefreshTokenAsync()
         {
             var token = await jsRuntime.InvokeAsync<string>("localStorage.getItem", "refreshToken");
@@ -66,18 +63,14 @@ namespace Projetize.App.Services.Auth
             if (string.IsNullOrWhiteSpace(token))
                 return false;
 
-            RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest()
-            {
-                RefreshToken = token
-            };
+            var refreshTokenRequest = new RefreshTokenRequestModel { RefreshToken = token };
 
             var response = await httpClient.PostAsJsonAsync("api/Users/refresh", refreshTokenRequest);
 
             if (!response.IsSuccessStatusCode)
                 return false;
 
-            var result = await response.Content.ReadFromJsonAsync<Models.Login.AuthResponse>();
-
+            var result = await response.Content.ReadFromJsonAsync<AuthResponseModel>();
             if (result == null)
                 return false;
 
@@ -88,25 +81,43 @@ namespace Projetize.App.Services.Auth
 
             return true;
         }
-
         public async Task<bool> IsAuthenticated()
         {
             var token = await jsRuntime.InvokeAsync<string>("localStorage.getItem", "accessToken");
 
             if (string.IsNullOrWhiteSpace(token))
                 return false;
+
             try
             {
                 var expiration = JwtHelper.GetExpiration(token);
                 if (expiration == null || expiration <= DateTime.UtcNow)
                     return false;
             }
-            catch (Exception)
+            catch
             {
                 return false;
             }
 
             return true;
+        }
+        public async Task<(bool Succes, string Message)> RegisterAsync(RegisterModel registerModel)
+        {
+            var response = await httpClient.PostAsJsonAsync("api/Users/register", registerModel);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            return response.IsSuccessStatusCode
+                ? (true, "Cadastro realizado com sucesso.")
+                : (false, responseContent);
+        }
+        public async Task<(bool Succes, string Message)> ConfirmEmailAsync(ConfirmEmailModel confirmEmail)
+        {
+            var response = await httpClient.PostAsJsonAsync("api/Users/confirm-email", confirmEmail);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            return response.IsSuccessStatusCode
+                ? (true, "E-mail confirmado com sucesso")
+                : (false, responseContent);
         }
     }
 }

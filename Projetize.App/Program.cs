@@ -23,7 +23,13 @@ builder.Services.AddHttpClient("AuthorizedClient", client =>
 })
 .AddHttpMessageHandler<AuthMessageHandler>();
 
-// Serviço de autenticação
+// HttpClient padrão (caso você use sem autenticação em algum ponto)
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri("https://localhost:7089/")
+});
+
+// Serviço de autenticação usando HttpClient nomeado + JSRuntime
 builder.Services.AddScoped<IAuthService>(sp =>
 {
     var factory = sp.GetRequiredService<IHttpClientFactory>();
